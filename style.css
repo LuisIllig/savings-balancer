@@ -1,0 +1,107 @@
+body {
+    background-color: #181a1b;
+    font-size: 22px;
+    color: #cac5be;
+}
+
+.container {
+    margin: auto;
+    width: 70%;
+    background-color: #1b1d1e;
+}
+
+.container-balancer {
+    border: 1px solid rgba(202, 197, 190, 0.2);
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.container-entry {
+    color: inherit;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.container-entry:last-child {
+    margin-bottom: 0;
+}
+
+.container-headline {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+input[type=text] {
+    background-color: #1b1d1e;
+    border: none;
+    font-size: inherit;
+    color: inherit;
+}
+
+/*#6200ee*/
+
+.container-values {
+    display: flex;
+    align-items: center;
+    color: inherit;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.container-number-input {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.label-entry {
+    width: 100%;
+}
+
+.currency {
+    position: relative;
+    right: 26px;
+}
+
+.percentage {
+    position: relative;
+    right: 28px;
+}
+
+.container-percentage-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 150px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+    background-color: #181a1b;
+    color: inherit;
+    border: 1px solid rgba(202, 197, 190, 0.2);
+    border-radius: 5px;
+    height: 40px;
+    font-size: inherit;
+    padding-left: 15px;
+    padding-right: 30px;
+    display: inline-block;
+    width: 100%;
+}
+
+input[type=number]:disabled {
+    border: none;
+    background-color: inherit;
+}

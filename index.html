@@ -6,82 +6,91 @@
 
 
     <script>document.write("<script type='text/javascript' src='SavingsBalancer.js?v=" + Date.now() + "'><\/script>");</script>
+    <script>document.write("<script type='text/javascript' src='InputFilter.js?v=" + Date.now() + "'><\/script>");</script>
     <script>document.write("<link rel='stylesheet' href='style.css?v=" + Date.now() + "'>");</script>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <script>
-    let savingsBalancer = new SavingsBalancer();
-    savingsBalancer.calculate();
+    $(document).ready(function() {
+        let savingsBalancer = new SavingsBalancer();
+        savingsBalancer.calculate();
+        let inputFilter = new InputFilter();
+    });
+
 </script>
 <div class="container">
     <div class="container-balancer">
-        <div class="container-headline">
-            <label>
-                <input type="text" value="Test">
-            </label>
-        </div>
-        <div class="container-entry">
-            <label class="label-entry">Current value:</label>
-            <div class="container-values">
-                <div class="container-percentage-input">
-                    <label>
-                        <input type="number" disabled>
-                    </label>
-                    <span class="percentage">%</span>
-                </div>
-                <div class="container-number-input">
-                    <label>
-                        <input type="number">
-                    </label>
-                    <span class="currency">€</span>
-                </div>
+        <div class="container-position">
+
+            <div class="container-headline">
+                <label>
+                    <input id="test" type="text" tabindex="1" value="Position 1">
+                </label>
             </div>
-            <label class="label-entry">Target value:</label>
-            <div class="container-values">
-                <div class="container-percentage-input">
-                    <label>
-                        <input type="number">
-                    </label>
-                    <span class="percentage">%</span>
+
+            <div class="container-entry">
+
+                <label class="label-entry">Current value:</label>
+                <div class="container-values">
+                    <div class="container-percentage-input">
+                        <input id="input-percentage-0" type="number" disabled>
+                        <span class="percentage">%</span>
+                    </div>
+                    <div class="container-number-input">
+                        <input id="input-money-0" type="number">
+                        <span class="currency">€</span>
+                    </div>
                 </div>
-                <div class="container-number-input">
-                    <label>
-                        <input type="number">
-                    </label>
-                    <span class="currency">€</span>
+
+                <label class="label-entry">Target value:</label>
+                <div class="container-values">
+                    <div class="container-percentage-input">
+                        <input id="input-percentage-1" type="number">
+                        <span class="percentage">%</span>
+                    </div>
+                    <div class="container-number-input">
+                        <input id="input-money-1" type="number" disabled>
+                        <span class="currency">€</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="container-entry">
-            <label class="label-entry">Current value:</label>
-            <div class="container-values">
-                <div class="container-percentage-input">
-                    <label>
-                        <input type="number" disabled>
-                    </label>
-                    <span class="percentage">%</span>
-                </div>
-                <div class="container-number-input">
-                    <label>
-                        <input type="number">
-                    </label>
-                    <span class="currency">€</span>
-                </div>
+
+        <div class="container-position">
+
+            <div class="container-headline">
+                <label>
+                    <input type="text" tabindex="2" value="Position 2">
+                </label>
             </div>
-            <label class="label-entry">Target value:</label>
-            <div class="container-values">
-                <div class="container-percentage-input">
-                    <label>
-                        <input type="number">
-                    </label>
-                    <span class="percentage">%</span>
+
+            <div class="container-entry">
+
+                <label class="label-entry">Current value:</label>
+                <div class="container-values">
+                    <div class="container-percentage-input">
+                        <input id="input-percentage-2" type="number" disabled>
+                        <span class="percentage">%</span>
+                    </div>
+                    <div class="container-number-input">
+                        <input id="input-money-2" type="number">
+                        <span class="currency">€</span>
+                    </div>
                 </div>
-                <div class="container-number-input">
-                    <label>
-                        <input type="number">
-                    </label>
-                    <span class="currency">€</span>
+
+                <label class="label-entry">Target value:</label>
+                <div class="container-values">
+                    <div class="container-percentage-input">
+                        <input id="input-percentage-3" type="number">
+                        <span class="percentage">%</span>
+                    </div>
+                    <div class="container-number-input">
+                        <input id="input-money-3" type="number" disabled>
+                        <span class="currency">€</span>
+                    </div>
                 </div>
             </div>
         </div>

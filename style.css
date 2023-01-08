@@ -21,14 +21,17 @@ body {
     display: grid;
     grid-template-columns: repeat(2,1fr);
     align-items: center;
-    margin-bottom: 50px;
 }
 
-.container-entry:last-child {
+.container-position:last-child {
     margin-bottom: 0;
 }
 
-.container-headline {
+.container-position {
+    margin-bottom: 50px;
+}
+
+.container-headline input {
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -39,8 +42,6 @@ input[type=text] {
     font-size: inherit;
     color: inherit;
 }
-
-/*#6200ee*/
 
 .container-values {
     display: flex;
@@ -55,7 +56,7 @@ input[type=text] {
     position: relative;
     display: flex;
     align-items: center;
-    margin: 0;
+    margin-left: 0;
 }
 
 .label-entry {
@@ -105,3 +106,30 @@ input[type=number]:disabled {
     border: none;
     background-color: inherit;
 }
+
+input[type=number]:hover {
+    border-color: #8c00ff;
+}
+
+input[type=number]:focus {
+    outline: none;
+    border: 1px solid #6200ee;
+    box-shadow: 0 0 10px #8c00ff;
+}
+
+input[type=text]:hover {
+    border-bottom: 1px solid #8c00ff;
+}
+
+input[type=text]:focus {
+    outline: none;
+    border-bottom: 1px solid #6200ee;
+    box-shadow: 0 10px 10px -10px #8c00ff;
+}
+
+.input-error {
+    outline: 1px solid red;
+}
+
+/*#8c00ff*/
+/*#6200ee*/

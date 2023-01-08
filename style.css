@@ -36,13 +36,6 @@ body {
     margin-bottom: 10px;
 }
 
-input[type=text] {
-    background-color: #1b1d1e;
-    border: none;
-    font-size: inherit;
-    color: inherit;
-}
-
 .container-values {
     display: flex;
     align-items: center;
@@ -77,19 +70,10 @@ input[type=text] {
     position: relative;
     display: flex;
     align-items: center;
-    width: 150px;
+    width: 170px;
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
+.input {
     background-color: #181a1b;
     color: inherit;
     border: 1px solid rgba(202, 197, 190, 0.2);
@@ -102,26 +86,33 @@ input[type=number] {
     width: 100%;
 }
 
-input[type=number]:disabled {
+.input:disabled {
     border: none;
     background-color: inherit;
 }
 
-input[type=number]:hover {
+.input:hover {
     border-color: #8c00ff;
 }
 
-input[type=number]:focus {
+.input:focus {
     outline: none;
     border: 1px solid #6200ee;
     box-shadow: 0 0 10px #8c00ff;
 }
 
-input[type=text]:hover {
+.headline {
+    background-color: #1b1d1e;
+    border: none;
+    font-size: inherit;
+    color: inherit;
+}
+
+.headline:hover {
     border-bottom: 1px solid #8c00ff;
 }
 
-input[type=text]:focus {
+.headline:focus {
     outline: none;
     border-bottom: 1px solid #6200ee;
     box-shadow: 0 10px 10px -10px #8c00ff;

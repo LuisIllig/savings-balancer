@@ -1,5 +1,7 @@
 class SavingsBalancer {
 
+    positions = [0, 1];
+
     calculate() {
         console.log("calculating")
     }
@@ -25,6 +27,24 @@ class SavingsBalancer {
         }
         num = num.join('');
         return num;
+    }
+
+    delete(input) {
+        let position = this.findPositionContainer(input);
+        let number = position.id.split("-")[1];
+        let index = this.positions.indexOf(number);
+        if (index !== -1) {
+            this.positions.splice(index, 1);
+        }
+        position.remove();
+    }
+
+    findPositionContainer(node) {
+        if (node.className === "container-position") {
+            return node;
+        } else {
+            return this.findPositionContainer(node.parentElement);
+        }
     }
 
 }

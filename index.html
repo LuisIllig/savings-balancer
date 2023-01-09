@@ -9,13 +9,14 @@
     <script>document.write("<script type='text/javascript' src='InputFilter.js?v=" + Date.now() + "'><\/script>");</script>
     <script>document.write("<link rel='stylesheet' href='style.css?v=" + Date.now() + "'>");</script>
 
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <script>
     let savingsBalancer = undefined;
-    $(document).ready(function() {
+    $(document).ready(function () {
         savingsBalancer = new SavingsBalancer();
         savingsBalancer.calculate();
         let inputFilter = new InputFilter();
@@ -24,12 +25,15 @@
 </script>
 <div class="container">
     <div class="container-balancer">
-        <div class="container-position">
+        <div id="position-0" class="container-position">
 
             <div class="container-headline">
                 <label>
                     <input class="headline" type="text" tabindex="1" value="Position 1">
                 </label>
+                <div class="container-headline-buttons">
+                    <button class="button-position-delete">-</button>
+                </div>
             </div>
 
             <div class="container-entry">
@@ -41,7 +45,8 @@
                         <span class="percentage">%</span>
                     </div>
                     <div class="container-number-input">
-                        <input class="input" id="input-money-0" type="text" value="0" onchange="savingsBalancer.update(this)">
+                        <input class="input" id="input-money-0" type="text" value="0"
+                               onchange="savingsBalancer.update(this)">
                         <span class="currency">€</span>
                     </div>
                 </div>
@@ -60,12 +65,15 @@
             </div>
         </div>
 
-        <div class="container-position">
+        <div id="position-1" class="container-position">
 
             <div class="container-headline">
                 <label>
                     <input class="headline" type="text" tabindex="1" value="Position 1">
                 </label>
+                <div class="container-headline-buttons">
+                    <button class="button-position-delete">-</button>
+                </div>
             </div>
 
             <div class="container-entry">
@@ -95,6 +103,7 @@
                 </div>
             </div>
         </div>
+        <button class="button-position-add">+</button>
     </div>
 </div>
 </body>

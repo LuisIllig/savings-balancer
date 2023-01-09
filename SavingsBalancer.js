@@ -1,6 +1,6 @@
 class SavingsBalancer {
 
-    positions = [0, 1];
+    positions = [1, 2];
 
     calculate() {
         console.log("calculating")
@@ -27,6 +27,14 @@ class SavingsBalancer {
         }
         num = num.join('');
         return num;
+    }
+
+    add() {
+        let sum = 0;
+        this.positions.forEach(position => {
+            sum += position;
+        });
+        this.positions.push(sum);
     }
 
     delete(input) {

@@ -9,6 +9,7 @@
     <script>document.write("<script type='text/javascript' src='InputFilter.js?v=" + Date.now() + "'><\/script>");</script>
     <script>document.write("<link rel='stylesheet' href='style.css?v=" + Date.now() + "'>");</script>
 
+    <script src="https://unpkg.com/ejs@3.1.8/ejs.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
             integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
@@ -25,85 +26,88 @@
 </script>
 <div class="container">
     <div class="container-balancer">
-        <div id="position-1" class="container-position">
+        <div id="container-positions">
+            <div id="position-1" class="container-position">
 
-            <div class="container-headline">
-                <label>
-                    <input class="headline" type="text" tabindex="1" value="Position 1">
-                </label>
-                <div class="container-headline-buttons">
-                    <button class="button-position-delete">-</button>
+                <div class="container-headline">
+                    <label>
+                        <input class="headline" type="text" tabindex="1" value="Position 1">
+                    </label>
+<!--                    <div class="container-headline-buttons">-->
+<!--                        <button class="button-position-delete">-</button>-->
+<!--                    </div>-->
+                </div>
+
+                <div class="container-entry">
+
+                    <label class="label-entry">Current value:</label>
+                    <div class="container-values">
+                        <div class="container-percentage-input">
+                            <input class="input" id="input-current-percentage-1" type="text" value="0" disabled>
+                            <span class="percentage">%</span>
+                        </div>
+                        <div class="container-number-input">
+                            <input class="input" id="input-current-money-1" type="text" value="0"
+                                   onchange="savingsBalancer.update(this)">
+                            <span class="currency">€</span>
+                        </div>
+                    </div>
+
+                    <label class="label-entry">Target value:</label>
+                    <div class="container-values">
+                        <div class="container-percentage-input">
+                            <input class="input" id="input-goal-percentage-1" type="text" value="0"
+                                   onchange="savingsBalancer.update(this)">
+                            <span class="percentage">%</span>
+                        </div>
+                        <div class="container-number-input">
+                            <input class="input" id="input-goal-money-1" type="text" value="0" disabled>
+                            <span class="currency">€</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="container-entry">
+            <div id="position-2" class="container-position">
 
-                <label class="label-entry">Current value:</label>
-                <div class="container-values">
-                    <div class="container-percentage-input">
-                        <input class="input" id="input-percentage-0" type="text" value="0" disabled>
-                        <span class="percentage">%</span>
-                    </div>
-                    <div class="container-number-input">
-                        <input class="input" id="input-money-0" type="text" value="0"
-                               onchange="savingsBalancer.update(this)">
-                        <span class="currency">€</span>
-                    </div>
+                <div class="container-headline">
+                    <label>
+                        <input class="headline" type="text" tabindex="1" value="Position 2">
+                    </label>
+<!--                    <div class="container-headline-buttons">-->
+<!--                        <button class="button-position-delete">-</button>-->
+<!--                    </div>-->
                 </div>
 
-                <label class="label-entry">Target value:</label>
-                <div class="container-values">
-                    <div class="container-percentage-input">
-                        <input class="input" id="input-percentage-1" type="text" value="0">
-                        <span class="percentage">%</span>
+                <div class="container-entry">
+
+                    <label class="label-entry">Current value:</label>
+                    <div class="container-values">
+                        <div class="container-percentage-input">
+                            <input class="input" id="input-current-percentage-2" type="text" value="0" disabled>
+                            <span class="percentage">%</span>
+                        </div>
+                        <div class="container-number-input">
+                            <input class="input" id="input-current-money-2" type="text" value="0">
+                            <span class="currency">€</span>
+                        </div>
                     </div>
-                    <div class="container-number-input">
-                        <input class="input" id="input-money-1" type="text" value="0" disabled>
-                        <span class="currency">€</span>
+
+                    <label class="label-entry">Target value:</label>
+                    <div class="container-values">
+                        <div class="container-percentage-input">
+                            <input class="input" id="input-goal-percentage-2" type="text" value="0">
+                            <span class="percentage">%</span>
+                        </div>
+                        <div class="container-number-input">
+                            <input class="input" id="input-goal-money-2" type="text" value="0" disabled>
+                            <span class="currency">€</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div id="position-2" class="container-position">
-
-            <div class="container-headline">
-                <label>
-                    <input class="headline" type="text" tabindex="1" value="Position 1">
-                </label>
-                <div class="container-headline-buttons">
-                    <button class="button-position-delete" onclick="savingsBalancer.delete(this)">-</button>
-                </div>
-            </div>
-
-            <div class="container-entry">
-
-                <label class="label-entry">Current value:</label>
-                <div class="container-values">
-                    <div class="container-percentage-input">
-                        <input class="input" id="input-percentage-2" type="text" value="0" disabled>
-                        <span class="percentage">%</span>
-                    </div>
-                    <div class="container-number-input">
-                        <input class="input" id="input-money-2" type="text" value="0">
-                        <span class="currency">€</span>
-                    </div>
-                </div>
-
-                <label class="label-entry">Target value:</label>
-                <div class="container-values">
-                    <div class="container-percentage-input">
-                        <input class="input" id="input-percentage-3" type="text" value="0">
-                        <span class="percentage">%</span>
-                    </div>
-                    <div class="container-number-input">
-                        <input class="input" id="input-money-3" type="text" value="0" disabled>
-                        <span class="currency">€</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button class="button-position-add">+</button>
+        <button class="button-position-add" onclick="savingsBalancer.add()">+</button>
     </div>
 </div>
 </body>

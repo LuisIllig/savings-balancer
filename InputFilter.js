@@ -1,27 +1,19 @@
 class InputFilter {
 
-    constructor() {
-        this.applyFilters(0);
+    applyFiltersToInitialPositions() {
         this.applyFilters(1);
         this.applyFilters(2);
-        this.applyFilters(3);
     }
 
     applyFilters(number) {
-        let inputMoney = "input-money-" + number;
-        let inputPercentage = "input-percentage-" + number;
+        console.log(document.getElementById("input-current-money-" + number));
+        this.setInputFilter(document.getElementById("input-current-money-" + number), function (value) {
+            return /^(\d*\.?\d*)*$/.test(value);
+        }, "Only digits and dots");
 
-        if (!document.getElementById(inputMoney).disabled) {
-            this.setInputFilter(document.getElementById(inputMoney), function(value) {
-                return /^(\d*.\d*)*$/.test(value);
-            }, "Only digits and '.' are allowed");
-        }
-
-        if (!document.getElementById(inputPercentage).disabled) {
-            this.setInputFilter(document.getElementById(inputPercentage), function(value) {
-                return /^\d{0,2}(,\d{0,2})?$/.test(value);
-            }, "dd,dd\nExample input: 5,05");
-        }
+        this.setInputFilter(document.getElementById("input-goal-percentage-" + number), function (value) {
+            return /^\d{0,2}(,\d{0,2})?$/.test(value);
+        }, "dd,dd\nExample input: 5,05");
     }
 
     setInputFilter(textbox, inputFilter, errMsg) {

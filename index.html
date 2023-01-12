@@ -9,7 +9,6 @@
     <script>document.write("<script type='text/javascript' src='InputFilter.js?v=" + Date.now() + "'><\/script>");</script>
     <script>document.write("<link rel='stylesheet' href='style.css?v=" + Date.now() + "'>");</script>
 
-    <script src="https://unpkg.com/ejs@3.1.8/ejs.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
             integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
@@ -18,9 +17,11 @@
 <script>
     let savingsBalancer = undefined;
     $(document).ready(function () {
-        savingsBalancer = new SavingsBalancer();
-        savingsBalancer.calculate();
         let inputFilter = new InputFilter();
+        savingsBalancer = new SavingsBalancer(inputFilter);
+        savingsBalancer.calculate();
+        inputFilter.applyFiltersToInitialPositions();
+
     });
 
 </script>
@@ -33,9 +34,6 @@
                     <label>
                         <input class="headline" type="text" tabindex="1" value="Position 1">
                     </label>
-<!--                    <div class="container-headline-buttons">-->
-<!--                        <button class="button-position-delete">-</button>-->
-<!--                    </div>-->
                 </div>
 
                 <div class="container-entry">
@@ -74,9 +72,6 @@
                     <label>
                         <input class="headline" type="text" tabindex="1" value="Position 2">
                     </label>
-<!--                    <div class="container-headline-buttons">-->
-<!--                        <button class="button-position-delete">-</button>-->
-<!--                    </div>-->
                 </div>
 
                 <div class="container-entry">

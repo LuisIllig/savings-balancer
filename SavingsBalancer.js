@@ -1,6 +1,11 @@
 class SavingsBalancer {
 
     positions = [1, 2];
+    inputFilter;
+
+    constructor(inputFilter) {
+        this.inputFilter = inputFilter;
+    }
 
     createHtmlPosition(position, title) {
         let template = `
@@ -63,7 +68,7 @@ class SavingsBalancer {
     }
 
     updateValue(input) {
-        let type = input.id.split("-")[1];
+        let type = input.id.split("-")[2];
         if (type === "money") {
             let number = input.value.replace(/\./g, "");
             number = this.addDots(number);
@@ -95,6 +100,7 @@ class SavingsBalancer {
         let positionElement = this.createElementFromHtml(html);
         let container = document.getElementById("container-positions");
         container.appendChild(positionElement);
+        this.inputFilter.applyFilters(sum);
     }
 
     delete(input) {

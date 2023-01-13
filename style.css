@@ -176,6 +176,17 @@ body {
     cursor: pointer;
 }
 
+.button-position-lock {
+    /*background-color: var(--dark-black);*/
+    border: 1px solid var(--white-border);
+    border-radius: 5px;
+    height: 50px;
+    width: 50px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background: url("trash.svg");
+}
+
 .button-position-delete:hover {
     border-color: var(--red);
 }

@@ -5,6 +5,7 @@
     --dark-purple: #6200ee;
     --light-purple: #8c00ff;
     --red: #ff0000;
+    --green: #008000;
     --white-border: rgba(202, 197, 190, 0.2);
 }
 
@@ -69,7 +70,7 @@ body {
 }
 
 .label-entry {
-    width: 100%;
+    float: left;
 }
 
 .currency {
@@ -207,4 +208,20 @@ body {
     display: grid;
     grid-template-columns: repeat(2,1fr);
     align-items: center;
+}
+
+.container-label {
+    text-align: center;
+}
+
+.label-diff {
+    vertical-align: center;
+}
+
+.diff-add {
+    color: var(--green);
+}
+
+.diff-remove {
+    color: var(--red);
 }

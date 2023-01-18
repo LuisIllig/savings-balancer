@@ -6,7 +6,6 @@ class InputFilter {
     }
 
     applyFilters(number) {
-        console.log(document.getElementById("input-current-money-" + number));
         this.setInputFilter(document.getElementById("input-current-money-" + number), function (value) {
             return /^(\d*\.?\d*)*$/.test(value);
         }, "Only digits and dots");

@@ -40,8 +40,10 @@
                 </div>
 
                 <div class="container-entry">
-
-                    <label class="label-entry">Current value:</label>
+                    <div class="container-label">
+                        <label class="label-entry">Current value:</label>
+                        <label class="label-diff" id="label-diff-1"></label>
+                    </div>
                     <div class="container-values">
                         <div class="container-percentage-input">
                             <input class="input" id="input-current-percentage-1" type="text" value="0" disabled>
@@ -79,14 +81,18 @@
 
                 <div class="container-entry">
 
-                    <label class="label-entry">Current value:</label>
+                    <div class="container-label">
+                        <label class="label-entry">Current value:</label>
+                        <label class="label-diff" id="label-diff-2"></label>
+                    </div>
                     <div class="container-values">
                         <div class="container-percentage-input">
                             <input class="input" id="input-current-percentage-2" type="text" value="0" disabled>
                             <span class="percentage">%</span>
                         </div>
                         <div class="container-number-input">
-                            <input class="input" id="input-current-money-2" type="text" value="0">
+                            <input class="input" id="input-current-money-2" type="text" value="0"
+                                   onchange="savingsBalancer.update(this)">
                             <span class="currency">€</span>
                         </div>
                     </div>
@@ -94,7 +100,8 @@
                     <label class="label-entry">Target value:</label>
                     <div class="container-values">
                         <div class="container-percentage-input">
-                            <input class="input" id="input-goal-percentage-2" type="text" value="0">
+                            <input class="input" id="input-goal-percentage-2" type="text" value="0"
+                                   onchange="savingsBalancer.update(this)">
                             <span class="percentage">%</span>
                         </div>
                         <div class="container-number-input">

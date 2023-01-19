@@ -225,3 +225,9 @@ body {
 .diff-remove {
     color: var(--red);
 }
+
+.percentage-not-valid {
+    outline: none;
+    border: 1px solid var(--red);
+    box-shadow: 0 0 10px var(--red);
+}

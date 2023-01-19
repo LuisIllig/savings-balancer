@@ -30,7 +30,10 @@ class SavingsBalancer {
 
             <div class="container-entry">
 
-                <label class="label-entry">Current value:</label>
+                <div class="container-label">
+                        <label class="label-entry">Current value:</label>
+                        <label class="label-diff" id="label-diff-${position}"></label>
+                </div>
                 <div class="container-values">
                     <div class="container-percentage-input">
                         <input class="input" id="input-current-percentage-${position}" type="text" value="0" disabled>
@@ -72,11 +75,33 @@ class SavingsBalancer {
     }
 
     update(input) {
-        this.formatMoneyInput(input);
+        if (input !== undefined) {
+            this.formatMoneyInput(input);
+        }
+        this.validatePercentage();
         this.calculateSimple();
     }
 
-    calculateSimple() {
+    validatePercentage() {
+        let elements = []
+        let total = 0;
+        this.positions.forEach(position => {
+            let element = document.getElementById(`${this.INPUT_GOAL_PERCENTAGE}${position}`);
+            total += Number(element.value);
+            elements.push(element);
+        });
+        if (total !== 100) {
+            elements.forEach(element => {
+                element.classList.add("percentage-not-valid");
+            });
+        } else {
+            elements.forEach(element => {
+                element.classList.remove("percentage-not-valid");
+            });
+        }
+    }
+
+    collectInput() {
         let collectedInputs = new Map();
         this.positions.forEach(position => {
             let icm = document.getElementById(`${this.INPUT_CURRENT_MONEY}${position}`).value;
@@ -86,23 +111,36 @@ class SavingsBalancer {
             igp = igp === undefined ? 0 : igp;
             collectedInputs.set(position, [icm, igp])
         });
+        return collectedInputs;
+    }
 
+    countTotal(collectedInputs) {
         let total = 0;
-        collectedInputs.forEach((value, key) => {
+        collectedInputs.forEach((value) => {
             total += Number(value[0]);
         });
+        return total;
+    }
 
+    calculateSimpleOutput(collectedInputs, total) {
         let output = new Map();
 
         collectedInputs.forEach((value, key) => {
             let icp = (value[0] / total) * 100;
+            if (isNaN(icp)) {
+                icp = 0;
+            }
             icp = icp.toString();
             icp = icp.substring(0, 5);
             let igm = (value[1] / 100) * total;
-            let diff = igm - total;
+            let diff = igm - value[0];
             output.set(key, [icp, igm, diff]);
         });
 
+        return output;
+    }
+
+    appendSimpleOutput(output) {
         output.forEach((value, key) => {
             document.getElementById(`${this.INPUT_CURRENT_PERCENTAGE}${key}`).value = value[0];
             document.getElementById(`${this.INPUT_GOAL_MONEY}${key}`).value = value[1];
@@ -112,16 +150,23 @@ class SavingsBalancer {
                     diff.classList.remove(this.DIFF_REMOVE);
                 }
                 diff.classList.add(this.DIFF_ADD);
-                diff.value = `+ ${value[2]}€`;
+                diff.textContent = `+${value[2]}€`;
             } else {
                 if (diff.classList.contains(this.DIFF_ADD)) {
                     diff.classList.remove(this.DIFF_ADD);
                 }
                 diff.classList.add(this.DIFF_REMOVE);
-                diff.value = `- ${value[2]}€`;
+                diff.textContent = `${value[2]}€`;
             }
-            diff.value = "test";
         });
+    }
+
+    // TODO NaN with something like 9,3%
+    calculateSimple() {
+        let collectedInputs = this.collectInput();
+        let total = this.countTotal(collectedInputs);
+        let output = this.calculateSimpleOutput(collectedInputs, total);
+        this.appendSimpleOutput(output);
     }
 
     formatMoneyInput(input) {
@@ -133,14 +178,14 @@ class SavingsBalancer {
         }
     }
 
-    addDots(num) {
-        num = num.toString();
-        num = num.split('');
-        for (let i = num.length - 3; i > 0; i -= 3) {
-            num.splice(i, 0, '.');
+    addDots(number) {
+        number = number.toString();
+        number = number.split('');
+        for (let i = number.length - 3; i > 0; i -= 3) {
+            number.splice(i, 0, '.');
         }
-        num = num.join('');
-        return num;
+        number = number.join('');
+        return number;
     }
 
     add() {
@@ -168,6 +213,8 @@ class SavingsBalancer {
             this.positions.splice(index, 1);
         }
         position.remove();
+
+        this.update()
     }
 
     findPositionContainer(node) {

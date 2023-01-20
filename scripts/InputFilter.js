@@ -11,7 +11,7 @@ class InputFilter {
         }, "Only digits and dots");
 
         this.setInputFilter(document.getElementById("input-goal-percentage-" + number), function (value) {
-            return /^\d{0,2}(,\d{0,2})?$/.test(value);
+            return /^\d{0,2}(\.\d{0,2})?$/.test(value);
         }, "dd,dd\nExample input: 5,05");
     }
 

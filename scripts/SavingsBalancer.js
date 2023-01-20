@@ -80,6 +80,7 @@ class SavingsBalancer {
         }
         this.validatePercentage();
         this.calculateSimple();
+        console.log("updated")
     }
 
     validatePercentage() {
@@ -87,7 +88,7 @@ class SavingsBalancer {
         let total = 0;
         this.positions.forEach(position => {
             let element = document.getElementById(`${this.INPUT_GOAL_PERCENTAGE}${position}`);
-            total += Number(element.value);
+            total += parseFloat(element.value);
             elements.push(element);
         });
         if (total !== 100) {
@@ -109,6 +110,7 @@ class SavingsBalancer {
             icm = icm.replace(/\./g, "");
             let igp = document.getElementById(`${this.INPUT_GOAL_PERCENTAGE}${position}`).value
             igp = igp === undefined ? 0 : igp;
+            igp = parseFloat(igp);
             collectedInputs.set(position, [icm, igp])
         });
         return collectedInputs;
@@ -130,10 +132,13 @@ class SavingsBalancer {
             if (isNaN(icp)) {
                 icp = 0;
             }
-            icp = icp.toString();
-            icp = icp.substring(0, 5);
+            icp = icp.toFixed(2)
+            // icp = icp.toString();
+            // icp = icp.substring(0, 5);
             let igm = (value[1] / 100) * total;
             let diff = igm - value[0];
+            igm = igm.toFixed(2);
+            diff = diff.toFixed(2);
             output.set(key, [icp, igm, diff]);
         });
 

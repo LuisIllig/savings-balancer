@@ -83,6 +83,23 @@ class SavingsBalancer {
         console.log("updated")
     }
 
+    calculateWithPlan() {
+        let plan = 500;
+        let collectedInputs = this.collectInput();
+        // loop till diff total = 500
+        // count months
+        // deeo copy collected inputs and add new position (500 * month)
+        // append plan and month
+
+    }
+
+    calculateSimple() {
+        let collectedInputs = this.collectInput();
+        let total = this.countTotal(collectedInputs);
+        let output = this.calculateSimpleOutput(collectedInputs, total);
+        this.appendSimpleOutput(output);
+    }
+
     validatePercentage() {
         let elements = []
         let total = 0;
@@ -133,8 +150,6 @@ class SavingsBalancer {
                 icp = 0;
             }
             icp = icp.toFixed(2)
-            // icp = icp.toString();
-            // icp = icp.substring(0, 5);
             let igm = (value[1] / 100) * total;
             let diff = igm - value[0];
             igm = igm.toFixed(2);
@@ -164,14 +179,6 @@ class SavingsBalancer {
                 diff.textContent = `${value[2]}€`;
             }
         });
-    }
-
-    // TODO NaN with something like 9,3%
-    calculateSimple() {
-        let collectedInputs = this.collectInput();
-        let total = this.countTotal(collectedInputs);
-        let output = this.calculateSimpleOutput(collectedInputs, total);
-        this.appendSimpleOutput(output);
     }
 
     formatMoneyInput(input) {

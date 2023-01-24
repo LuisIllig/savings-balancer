@@ -231,3 +231,37 @@ body {
     border: 1px solid var(--red);
     box-shadow: 0 0 10px var(--red);
 }
+
+.container-savings {
+    margin-bottom: 50px;
+}
+
+.monthly-rate {
+    background-color: var(--dark-black);
+    color: inherit;
+    border: 1px solid var(--white-border);
+    border-radius: 5px;
+    height: 40px;
+    font-size: inherit;
+    width: 200px;
+    margin-left: 15px;
+}
+
+.monthly-rate:disabled {
+    border: none;
+    background-color: inherit;
+}
+
+.monthly-rate:hover {
+    border-color: var(--light-purple);
+}
+
+.monthly-rate:focus {
+    outline: none;
+    border: 1px solid var(--dark-purple);
+    box-shadow: 0 0 10px var(--light-purple);
+}
+
+.checkbox-savings input:checked ~ .checkmark {
+    background-color: var(--light-purple);
+}

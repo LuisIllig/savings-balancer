@@ -27,6 +27,20 @@
 <!--TODO add ui for savings plan / needs savings per month, space for result (months), switch-->
 <div class="container">
     <div class="container-balancer">
+        <div class="container-savings">
+            <div>
+                <label>
+                    Savings Plan
+                    <input class="checkbox-savings" type="checkbox">
+                </label>
+            </div>
+            <div>
+                <label>
+                    Monthly Rate:
+                    <input class="monthly-rate" type="text">
+                </label>
+            </div>
+        </div>
         <div id="container-positions">
             <div id="position-1" class="container-position">
 
@@ -34,9 +48,6 @@
                     <label>
                         <input class="headline" type="text" tabindex="1" value="Position 1">
                     </label>
-<!--                    <div class="container-headline-buttons">-->
-<!--                        <button class="button-position-lock" onclick="savingsBalancer.delete(this)"></button>-->
-<!--                    </div>-->
                 </div>
 
                 <div class="container-entry">

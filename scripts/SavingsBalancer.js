@@ -70,30 +70,16 @@ class SavingsBalancer {
         return template.content.firstElementChild;
     }
 
-    calculate() {
-        console.log("calculating")
-    }
-
     update(input) {
         if (input !== undefined) {
             this.formatMoneyInput(input);
         }
         this.validatePercentage();
-        this.calculateSimple();
+        this.calculate();
         console.log("updated")
     }
 
-    calculateWithPlan() {
-        let plan = 500;
-        let collectedInputs = this.collectInput();
-        // loop till diff total = 500
-        // count months
-        // deeo copy collected inputs and add new position (500 * month)
-        // append plan and month
-
-    }
-
-    calculateSimple() {
+    calculate() {
         let collectedInputs = this.collectInput();
         let total = this.countTotal(collectedInputs);
         let output = this.calculateSimpleOutput(collectedInputs, total);

@@ -135,11 +135,11 @@ class SavingsBalancer {
             if (isNaN(icp)) {
                 icp = 0;
             }
-            icp = icp.toFixed(2)
+            icp = icp % 1 === 0 ? icp : icp.toFixed(2)
             let igm = (value[1] / 100) * total;
             let diff = igm - value[0];
-            igm = igm.toFixed(2);
-            diff = diff.toFixed(2);
+            igm = igm % 1 === 0 ? igm : igm.toFixed(2);
+            diff = diff % 1 === 0 ? diff : diff.toFixed(2);
             output.set(key, [icp, igm, diff]);
         });
 

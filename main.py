@@ -18,7 +18,7 @@ class Result(BaseModel):
 
 
 @app.post("/positions/")
-async def calculate_positions(positions: list[Position]):
+async def calculate_positions(positions: list[Position]) -> list[Result]:
     total = 0
     for position in positions:
         total += position.cm
